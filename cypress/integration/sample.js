@@ -1,11 +1,30 @@
 describe('My first test', function(){
-    it('actions that expected', function(){
-        cy.visit('https://example.cypress.io')
+    it('anything', function(){
+        cy.visit('/')
         cy.contains('type').click()
         cy.url()
         cy.should('include','/commands/actions')
         cy.get('.action-email')
             .type('fake@email.com')
             .should('have.value','fake@email.com')
+
+        cy.get(".action-disabled")
+            .should("be.disabled")
+        cy.get("#password1")
+            .type("1234")
+        cy.get("#fullName1")
+            .type("test_name")
+            .should("have.value","test_name")
+        cy.get("#description")
+            .type("some description")
+            .should("have.value","some description")
+        cy.get("#couponCode1")
+            .type("0001")
+            .should("have.value","0001")
+        cy.contains("submit")
+            .click()
+        cy.url()
+            .should("include","https://docs.cypress.io/api/commands/submit")
+        
     })
 })
